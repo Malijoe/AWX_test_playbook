@@ -1,0 +1,11 @@
+---
+- name: This will test AWX_Cluster
+  hosts: localhost
+  tasks:
+    - name: ping the localhost
+      ping:
+      register: results
+
+    - name: output results
+      debug:
+        msg: "{{ results }}"

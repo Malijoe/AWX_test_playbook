@@ -1,0 +1,5 @@
+- name: test migration
+  hosts: localhost
+  tasks:
+    - debug:
+        msg: "Hello There"

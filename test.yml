@@ -8,4 +8,4 @@
 
     - name: output results
       debug:
-        msg: "{{ results }}"
+        msg: "{{ ansible_fqdn }}"

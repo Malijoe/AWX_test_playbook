@@ -1,0 +1,22 @@
+- name: test the addition of awx containers to the active inventory
+  hosts: tower
+  tasks:
+    - name: add tower containers to the active inventory
+      add_host:
+        name: '{{ container }}'
+        groups: "{{ inventory_hostname }}"
+        ansible_connection: docker
+      loop: 
+        - awx_task
+        - awx_web
+        - awx_redis
+
+    - name: confirm inventory contents
+      debug:
+        var: groups[inventory_hostname]
+
+    - name: run a test task on the containers
+      raw: hostname
+      delegate_to: awx_task
+
+      
